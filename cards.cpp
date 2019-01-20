@@ -208,3 +208,5 @@ void Hand::draw() {
 	Player class
 	************************************************* */
 	// Implemente the member functions of the Player class here.
+
+Player::Player(int starting_money) : money(starting_money) {};
