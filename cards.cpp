@@ -31,16 +31,16 @@ Card::Card() {
 
 	r = 1 + rand() % 10;
 	switch (r) {
-	case  1: rank = AS; break;
-	case  2: rank = DOS; break;
-	case  3: rank = TRES; break;
-	case  4: rank = CUATRO; break;
-	case  5: rank = CINCO; break;
-	case  6: rank = SEIS; break;
-	case  7: rank = SIETE; break;
-	case  8: rank = SOTA; break;
-	case  9: rank = CABALLO; break;
-	case 10: rank = REY; break;
+	case  1: rank = AS; ranke = ACE; break;
+	case  2: rank = DOS; ranke = TWO; break;
+	case  3: rank = TRES; ranke = THREE; break;
+	case  4: rank = CUATRO; ranke = FOUR; break;
+	case  5: rank = CINCO; ranke = FIVE; break;
+	case  6: rank = SEIS; ranke = SIX; break;
+	case  7: rank = SIETE; ranke = SEVEN; break;
+	case  8: rank = SOTA; ranke = JACK; break;
+	case  9: rank = CABALLO; ranke = KNIGHT; break;
+	case 10: rank = REY; ranke = KING; break;
 	default: break;
 	}
 }
@@ -116,7 +116,41 @@ string Card::get_english_suit() const {
 // Accessor: returns a string with the rank of the card in English 
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
-	return "";
+	string rankNameEngl;
+	switch (rank) {
+	case ACE:
+		rankNameEngl = "Ace";
+		break;
+	case TWO:
+		rankNameEngl = "Two";
+		break;
+	case THREE:
+		rankNameEngl = "Three";
+		break;
+	case FOUR:
+		rankNameEngl = "Four";
+		break;
+	case FIVE:
+		rankNameEngl = "Five";
+		break;
+	case SIX:
+		rankNameEngl = "Six";
+		break;
+	case SEVEN:
+		rankNameEngl = "Seven";
+		break;
+	case JACK:
+		rankNameEngl = "Jack";
+		break;
+	case KNIGHT:
+		rankNameEngl = "Knight";
+		break;
+	case KING:
+		rankNameEngl = "King";
+		break;
+	default: break;
+	}
+	return rankNameEngl;
 }
 
 

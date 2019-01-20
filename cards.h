@@ -25,6 +25,7 @@ The rank of AS is reported as    static_cast<int>(AS) + 1   = 0 + 1 =  1
 The rank of SOTA is reported as  static_cast<int>(SOTA) + 1 = 9 + 1 = 10
 */
 enum rank_t { AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA = 9, CABALLO = 10, REY = 11 };
+enum rank_te { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, JACK = 9, KNIGHT = 10, KING = 11 };
 
 class Card {
 public:
@@ -55,6 +56,8 @@ public:
 private:
 	suit_t suit;
 	rank_t rank;
+	//suit_te suite;
+	rank_te ranke;
 };
 
 
