@@ -14,6 +14,7 @@
 using namespace std;
 
 enum suit_t { OROS, COPAS, ESPADAS, BASTOS };
+enum suit_te {GOLDS, CUPS, SWORDS, CLUBS};
 
 /*
 The values for this type start at 0 and increase by one
@@ -56,7 +57,7 @@ public:
 private:
 	suit_t suit;
 	rank_t rank;
-	//suit_te suite;
+	suit_te suite;
 	rank_te ranke;
 };
 

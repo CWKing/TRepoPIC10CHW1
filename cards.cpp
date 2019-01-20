@@ -22,10 +22,10 @@ You might or might not need these two extra libraries
 Card::Card() {
 	int r = 1 + rand() % 4;
 	switch (r) {
-	case 1: suit = OROS; break;
-	case 2: suit = COPAS; break;
-	case 3: suit = ESPADAS; break;
-	case 4: suit = BASTOS; break;
+	case 1: suit = OROS; suite = GOLDS; break;
+	case 2: suit = COPAS; suite = CUPS; break;
+	case 3: suit = ESPADAS; suite = SWORDS; break;
+	case 4: suit = BASTOS; suite = CLUBS; break;
 	default: break;
 	}
 
@@ -110,7 +110,23 @@ string Card::get_spanish_rank() const {
 // Accessor: returns a string with the suit of the card in English 
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
-	return "";
+	string suitNameEngl;
+	switch (suite) {
+	case GOLDS:
+		suitNameEngl = "golds";
+		break;
+	case CUPS:
+		suitNameEngl = "cups";
+		break;
+	case SWORDS:
+		suitNameEngl = "swords";
+		break;
+	case CLUBS:
+		suitNameEngl = "clubs";
+		break;
+	default: break;
+	}
+	return suitNameEngl;
 }
 
 // Accessor: returns a string with the rank of the card in English 
