@@ -113,13 +113,13 @@ string Card::get_english_suit() const {
 	string suitNameEngl;
 	switch (suite) {
 	case GOLDS:
-		suitNameEngl = "golds";
+		suitNameEngl = "coins"; //Literal translation is 'golds' but use 'coins' instead
 		break;
 	case CUPS:
 		suitNameEngl = "cups";
 		break;
 	case SWORDS:
-		suitNameEngl = "swords";
+		suitNameEngl = "spades"; //Literal translation is 'swords' but use 'spades' instead
 		break;
 	case CLUBS:
 		suitNameEngl = "clubs";
@@ -185,14 +185,26 @@ bool Card::operator < (Card card2) const {
 
 
 
-/* *************************************************
-   Hand class
-   ************************************************* */
-   // Implemente the member functions of the Hand class here.
+/*	*************************************************
+	Hand class
+	************************************************* */
+	// Implemente the member functions of the Hand class here.
 
+Hand::Hand() {
+	hand.reserve(15); // Max possible cards one can have before busting + 1
+};
 
+unsigned short Hand::get_Total_Rank() {
+	unsigned short total_Rank = 0;
+	for (auto& ele : this->hand) total_Rank += ele.get_rank();
+	return total_Rank;
+};
 
-   /* *************************************************
-	  Player class
-	  ************************************************* */
-	  // Implemente the member functions of the Player class here.
+void Hand::draw() {
+	this->hand.push_back(Card());
+};
+
+/*	*************************************************
+	Player class
+	************************************************* */
+	// Implemente the member functions of the Player class here.
