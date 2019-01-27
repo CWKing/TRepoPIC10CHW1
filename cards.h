@@ -55,6 +55,7 @@ private:
 class Player {
 public:
 	Player(int m = 100);
+	int get_wallet() const;
 
 private:
 	int money;

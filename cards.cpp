@@ -210,3 +210,7 @@ void Hand::draw() {
 	// Implemente the member functions of the Player class here.
 
 Player::Player(int starting_money) : money(starting_money) {};
+
+int Player::get_wallet() const {
+	return this->money;
+};
