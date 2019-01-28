@@ -30,6 +30,7 @@ public:
 	string get_english_rank() const;
 
 	int get_rank() const;
+	void display_card() const;
 
 	bool operator < (Card card2) const;
 
@@ -44,8 +45,10 @@ class Hand {
 public:
 	Hand();
 
-	unsigned short get_Total_Rank();
+	unsigned short get_Total_Rank() const;
+	void display_hand() const;
 	void draw();
+
 
 private:
 	vector<Card> hand;
@@ -56,9 +59,13 @@ class Player {
 public:
 	Player(int m = 100);
 	int get_wallet() const;
+	void show_hand() const;
+	void draw_card();
+
 
 private:
 	int money;
+	Hand player_hand;
 
 };
 

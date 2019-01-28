@@ -177,6 +177,11 @@ int Card::get_rank() const {
 	return static_cast<int>(rank) + 1;
 }
 
+void Card::display_card() const {
+	std::cout << "\t\t" << this->get_spanish_rank() << " de " << this->get_spanish_suit()
+		<< "\t\t" << "(" << this->get_english_rank() << " of " << this->get_english_suit() << ").\n";
+};
+
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -194,15 +199,20 @@ Hand::Hand() {
 	hand.reserve(15); // Max possible cards one can have before busting + 1
 };
 
-unsigned short Hand::get_Total_Rank() {
+unsigned short Hand::get_Total_Rank() const {
 	unsigned short total_Rank = 0;
-	for (auto& ele : this->hand) total_Rank += ele.get_rank();
+	for (const Card& ele : this->hand) total_Rank += ele.get_rank();
 	return total_Rank;
+};
+
+void Hand::display_hand() const {
+	for (const Card& ele : this->hand) ele.display_card();
 };
 
 void Hand::draw() {
 	this->hand.push_back(Card());
 };
+
 
 /*	*************************************************
 	Player class
@@ -214,3 +224,12 @@ Player::Player(int starting_money) : money(starting_money) {};
 int Player::get_wallet() const {
 	return this->money;
 };
+
+void Player::show_hand() const {
+	this->player_hand.display_hand();
+};
+
+void Player::draw_card() {
+	this->player_hand.draw();
+};
+
