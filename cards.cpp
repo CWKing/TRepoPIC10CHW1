@@ -185,7 +185,7 @@ void Card::display_card() const {
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
-	return rank < card2.rank;
+	return this->get_rank() < card2.get_rank();
 }
 
 
@@ -209,10 +209,17 @@ void Hand::display_hand() const {
 	for (const Card& ele : this->hand) ele.display_card();
 };
 
+void Hand::show_newest_card2electricboogaloo() const {
+	this->hand[hand.size() - 1].display_card();
+};
+
 void Hand::draw() {
 	this->hand.push_back(Card());
 };
 
+//Card Hand::operator[](int index) const {
+//
+//};
 
 /*	*************************************************
 	Player class
@@ -227,6 +234,14 @@ int Player::get_wallet() const {
 
 void Player::show_hand() const {
 	this->player_hand.display_hand();
+};
+
+unsigned short Player::get_Rank() const {
+	return player_hand.get_Total_Rank();
+};
+
+void Player::show_newest_card() const {
+	this->player_hand.show_newest_card2electricboogaloo();
 };
 
 void Player::draw_card() {

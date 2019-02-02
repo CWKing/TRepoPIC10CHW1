@@ -47,8 +47,10 @@ public:
 
 	unsigned short get_Total_Rank() const;
 	void display_hand() const;
+	void show_newest_card2electricboogaloo() const;
 	void draw();
 
+	//Card operator[](int) const;
 
 private:
 	vector<Card> hand;
@@ -60,7 +62,10 @@ public:
 	Player(int m = 100);
 	int get_wallet() const;
 	void show_hand() const;
+	unsigned short get_Rank() const;
+	void show_newest_card() const;
 	void draw_card();
+
 
 
 private:

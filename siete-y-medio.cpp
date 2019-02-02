@@ -24,7 +24,7 @@ int main() {
 	bool playing = true;
 	unsigned int bet = 0;
 	while (true) {
-		std::cout << "Play a(nother) game of Siete y medio? Y/N";
+		std::cout << "Play a(nother) game of Siete y medio? Y/N ";
 		std::cin >> response;
 		if (capitalize(response) != 'Y') break;
 
@@ -34,11 +34,22 @@ int main() {
 		Player the_player(temp_int);
 		Player dealer(900);
 		
-		while (playing && the_player.get_wallet() > 0 && dealer.get_wallet > 0) {
-			std::cout << "You have: $" << the_player.get_wallet() << ". Enter bet: ";
-			std::cin >> bet;
+		while (playing && (0 < the_player.get_wallet()) && (0 < dealer.get_wallet())) {
+			while (bet < 1 || the_player.get_wallet() < bet) {
+				std::cout << "You have: $" << the_player.get_wallet() << ". Enter bet: ";
+				std::cin >> bet;
+				if (bet < 1 || the_player.get_wallet() < bet) std::cout << "You can't bet negative, zero, or more than you have!\n";
+			};
 			the_player.draw_card();
-			the_player.show_hand();
+			while (true) {
+				the_player.show_hand();
+				std::cout << "Your total is " << the_player.get_Rank() << ". Do you want to draw another card? Y/N ";
+				std::cin >> response;
+				if (capitalize(response) != 'Y') break;
+				the_player.draw_card();
+				std::cout << "New card:\n";
+				the_player.show_newest_card();
+			};
 		};
 
 	};
