@@ -13,6 +13,7 @@
 // Non member functions declarations (if any)
 char capitalize(char);
 
+
 // Non member functions implementations (if any)
 char capitalize(char to_capitalize) {
 	return (to_capitalize < 123 && 96 < to_capitalize) ? (to_capitalize - 32) : to_capitalize;
@@ -41,14 +42,16 @@ int main() {
 				if (bet < 1 || the_player.get_wallet() < bet) std::cout << "You can't bet negative, zero, or more than you have!\n";
 			};
 			the_player.draw_card();
-			while (true) {
-				the_player.show_hand();
+			the_player.show_hand();
+			while (the_player.get_Rank() < 7.5) {
 				std::cout << "Your total is " << the_player.get_Rank() << ". Do you want to draw another card? Y/N ";
 				std::cin >> response;
 				if (capitalize(response) != 'Y') break;
 				the_player.draw_card();
 				std::cout << "New card:\n";
 				the_player.show_newest_card();
+				std::cout << "Your cards:\n";
+				the_player.show_hand();
 			};
 		};
 

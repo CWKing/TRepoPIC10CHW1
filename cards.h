@@ -25,11 +25,9 @@ public:
 
 	string get_spanish_suit() const;
 	string get_spanish_rank() const;
-
 	string get_english_suit() const;
 	string get_english_rank() const;
-
-	int get_rank() const;
+	double get_rank() const;
 	void display_card() const;
 
 	bool operator < (Card card2) const;
@@ -45,12 +43,10 @@ class Hand {
 public:
 	Hand();
 
-	unsigned short get_Total_Rank() const;
+	double get_Total_Rank() const;
 	void display_hand() const;
 	void show_newest_card2electricboogaloo() const;
 	void draw();
-
-	//Card operator[](int) const;
 
 private:
 	vector<Card> hand;
@@ -62,12 +58,10 @@ public:
 	Player(int m = 100);
 	int get_wallet() const;
 	void show_hand() const;
-	unsigned short get_Rank() const;
+	double get_Rank() const;
 	void show_newest_card() const;
 	void draw_card();
-
-
-
+	   
 private:
 	int money;
 	Hand player_hand;

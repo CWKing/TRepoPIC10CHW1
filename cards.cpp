@@ -173,8 +173,8 @@ string Card::get_english_rank() const {
 
 // Assigns a numerical value to card based on rank.
 // AS=1, DOS=2, ..., SIETE=7, SOTA=10, CABALLO=11, REY=12
-int Card::get_rank() const {
-	return static_cast<int>(rank) + 1;
+double Card::get_rank() const {
+	return static_cast<int>(rank) < 8 ? static_cast<int>(rank) + 1 : 0.5;
 }
 
 void Card::display_card() const {
@@ -199,8 +199,8 @@ Hand::Hand() {
 	hand.reserve(15); // Max possible cards one can have before busting + 1
 };
 
-unsigned short Hand::get_Total_Rank() const {
-	unsigned short total_Rank = 0;
+double Hand::get_Total_Rank() const {
+	double total_Rank = 0;
 	for (const Card& ele : this->hand) total_Rank += ele.get_rank();
 	return total_Rank;
 };
@@ -236,7 +236,7 @@ void Player::show_hand() const {
 	this->player_hand.display_hand();
 };
 
-unsigned short Player::get_Rank() const {
+double Player::get_Rank() const {
 	return player_hand.get_Total_Rank();
 };
 
