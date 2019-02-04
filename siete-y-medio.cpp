@@ -12,6 +12,7 @@
 
 // Non member functions declarations (if any)
 char capitalize(char);
+void update_game_log();
 
 
 // Non member functions implementations (if any)
@@ -19,10 +20,15 @@ char capitalize(char to_capitalize) {
 	return (to_capitalize < 123 && 96 < to_capitalize) ? (to_capitalize - 32) : to_capitalize;
 };
 
+void update_game_log() {
+	
+};
+
 // Stub for main
 int main() {
 	char response = '\0';
 	int bet = 0, temp_int = 0;
+	
 
 	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n";
 	while (temp_int < 1) {
@@ -85,6 +91,8 @@ int main() {
 			std::cout << "You lose " << bet << ".\n";
 			the_player.modify_monies(-bet);
 		};
+
+		update_game_log();
 
 		std::cout << "Play another round of Siete y medio? Y/N ";
 		std::cin >> response;

@@ -50,7 +50,7 @@ public:
 	void clear_hand();
 
 private:
-	vector<Card> hand;
+	std::vector<Card> hand;
 };
 
 
