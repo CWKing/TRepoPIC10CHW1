@@ -35,7 +35,10 @@ int main() {
 	Player dealer(900);
 
 	do {
-		
+		bet = 0;
+		the_player.clear_player_hand();
+		dealer.clear_player_hand();
+
 		while (bet < 1 || the_player.get_wallet() < bet) {
 			std::cout << "You have: $" << the_player.get_wallet() << ". Enter bet: ";
 			std::cin >> bet;
@@ -66,12 +69,31 @@ int main() {
 			std::cout << "The dealer's total is " << dealer.get_Rank() << ".\n";
 		};
 
-		std::cout << "Play a(nother) round of Siete y medio? Y/N ";
+		if (7.5 < the_player.get_Rank()) {
+			std::cout << "You lose " << bet << ".\n";
+			the_player.modify_monies(-bet);
+		}
+		else if (7.5 < dealer.get_Rank() || 0 < (the_player.get_Rank() - dealer.get_Rank())) {
+			std::cout << "You win " << bet << ".\n";
+			the_player.modify_monies(bet);
+			dealer.modify_monies(-bet);
+		}
+		else if (the_player.get_Rank() == dealer.get_Rank()) {
+			std::cout << "It's a draw; you get your bet back.\n";
+		}
+		else {
+			std::cout << "You lose " << bet << ".\n";
+			the_player.modify_monies(-bet);
+		};
+
+		std::cout << "Play another round of Siete y medio? Y/N ";
 		std::cin >> response;
 		if (capitalize(response) != 'Y') break;
 
 	} while ((0 < the_player.get_wallet()) && (0 < dealer.get_wallet()));
 
-
+	std::cout << "Game's concluded! You walk away with... $" << the_player.get_wallet() << ".\n";
+	std::cout << ((0 < the_player.get_wallet() - temp_int) ? "You won $" : "You lost $");
+	std::cout << the_player.get_wallet() - temp_int << "!\nCome back again!";
 	return 0;
 }

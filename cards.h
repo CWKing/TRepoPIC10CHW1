@@ -47,6 +47,7 @@ public:
 	void display_hand() const;
 	void show_newest_card2electricboogaloo() const;
 	void draw();
+	void clear_hand();
 
 private:
 	vector<Card> hand;
@@ -61,6 +62,9 @@ public:
 	double get_Rank() const;
 	void show_newest_card() const;
 	void draw_card();
+	void modify_monies(int);
+	void clear_player_hand();
+
 	   
 private:
 	int money;

@@ -217,6 +217,10 @@ void Hand::draw() {
 	this->hand.push_back(Card());
 };
 
+void Hand::clear_hand() {
+	this->hand.clear();
+};
+
 //Card Hand::operator[](int index) const {
 //
 //};
@@ -246,5 +250,13 @@ void Player::show_newest_card() const {
 
 void Player::draw_card() {
 	this->player_hand.draw();
+};
+
+void Player::modify_monies(int bet) {
+	this->money += bet;
+};
+
+void Player::clear_player_hand() {
+	this->player_hand.clear_hand();
 };
 
