@@ -19,9 +19,23 @@ enum suit_te {GOLDS, CUPS, SWORDS, CLUBS};
 enum rank_t { AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA = 9, CABALLO = 10, REY = 11 };
 enum rank_te { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, JACK = 9, KNIGHT = 10, KING = 11 };
 
+class Deck {
+public:
+	Deck();
+
+	Card Draw_card();
+	void Shuffle();
+
+
+private:
+	std::vector<Card> Card_Deck;
+};
+
+
 class Card {
 public:
 	Card();
+	Card(suit_t, rank_t);
 
 	string get_spanish_suit() const;
 	string get_spanish_rank() const;
@@ -50,7 +64,7 @@ public:
 	void clear_hand();
 
 private:
-	vector<Card> hand;
+	std::vector<Card> hand;
 };
 
 
