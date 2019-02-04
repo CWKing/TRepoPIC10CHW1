@@ -179,7 +179,7 @@ double Card::get_rank() const {
 
 void Card::display_card() const {
 	std::cout << "\t\t" << this->get_spanish_rank() << " de " << this->get_spanish_suit()
-		<< "\t\t" << "(" << this->get_english_rank() << " of " << this->get_english_suit() << ").\n";
+		<< "\t\t\t" << "(" << this->get_english_rank() << " of " << this->get_english_suit() << ").\n";
 };
 
 // Comparison operator for cards
