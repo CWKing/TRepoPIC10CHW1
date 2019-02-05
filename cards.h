@@ -4,6 +4,7 @@
    Interface of a simple Card class
    ************************************* */
 
+
 #include <string>
 #include <vector>
 #include <fstream>
@@ -28,7 +29,7 @@ public:
 	string get_english_suit() const;
 	string get_english_rank() const;
 	double get_rank() const;
-	void display_card() const;
+	std::string display_card() const;
 
 	bool operator < (Card card2) const;
 
@@ -44,7 +45,7 @@ public:
 	Hand();
 
 	double get_Total_Rank() const;
-	void display_hand() const;
+	std::string display_hand() const;
 	void show_newest_card2electricboogaloo() const;
 	void draw();
 	void clear_hand();
@@ -58,7 +59,7 @@ class Player {
 public:
 	Player(int m = 100);
 	int get_wallet() const;
-	void show_hand() const;
+	std::string show_hand() const;
 	double get_Rank() const;
 	void show_newest_card() const;
 	void draw_card();

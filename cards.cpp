@@ -177,9 +177,11 @@ double Card::get_rank() const {
 	return static_cast<int>(rank) < 8 ? static_cast<int>(rank) + 1 : 0.5;
 }
 
-void Card::display_card() const {
-	std::cout << "\t\t" << this->get_spanish_rank() << " de " << this->get_spanish_suit()
-		<< "\t\t\t" << "(" << this->get_english_rank() << " of " << this->get_english_suit() << ").\n";
+std::string Card::display_card() const {
+	std::string output = "";
+	output = output + "\t\t" + this->get_spanish_rank() + " de " + this->get_spanish_suit()
+		+ "\t\t\t" + "(" + this->get_english_rank() + " of " + this->get_english_suit() + ").\n";
+	return output;
 };
 
 // Comparison operator for cards
@@ -205,8 +207,10 @@ double Hand::get_Total_Rank() const {
 	return total_Rank;
 };
 
-void Hand::display_hand() const {
-	for (const Card& ele : this->hand) ele.display_card();
+std::string Hand::display_hand() const {
+	std::string output = "";
+	for (const Card& ele : this->hand) output += ele.display_card();
+	return output;
 };
 
 void Hand::show_newest_card2electricboogaloo() const {
@@ -236,8 +240,8 @@ int Player::get_wallet() const {
 	return this->money;
 };
 
-void Player::show_hand() const {
-	this->player_hand.display_hand();
+std::string Player::show_hand() const {
+	return this->player_hand.display_hand();
 };
 
 double Player::get_Rank() const {

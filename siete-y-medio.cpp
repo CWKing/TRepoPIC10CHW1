@@ -12,7 +12,7 @@
 
 // Non member functions declarations (if any)
 char capitalize(char);
-void update_game_log();
+void update_game_log(std::ostream&, int, int, Player, Player);
 
 
 // Non member functions implementations (if any)
@@ -20,16 +20,19 @@ char capitalize(char to_capitalize) {
 	return (to_capitalize < 123 && 96 < to_capitalize) ? (to_capitalize - 32) : to_capitalize;
 };
 
-void update_game_log() {
-	
+void update_game_log(std::ostream& game_log, int round, int bet, Player player, Player dealer) {
+	game_log << "-----------------------------------------------\n\nGame number: " << round << "\t\tMoney left: $" << player.get_wallet() - bet
+		<< "\nBet: $" << bet << "\n\nYour cards:\n" << player.show_hand() << "\nYour total: " << player.get_Rank() << ".\n\n"
+		<< "Dealer's cards:\n" << dealer.show_hand() << "\nDealer's total is: " << dealer.get_Rank() << ".\n";
 };
 
 // Stub for main
 int main() {
 	char response = '\0';
-	int bet = 0, temp_int = 0;
+	int bet = 0, temp_int = 0, round = 1;
+	std::ofstream log;
+	log.open("gamelog.txt");
 	
-
 	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n";
 	while (temp_int < 1) {
 		std::cout << "Please specify your starting holdings: ";
@@ -52,7 +55,7 @@ int main() {
 		};
 
 		the_player.draw_card();
-		the_player.show_hand();
+		std::cout << the_player.show_hand();
 
 		while (the_player.get_Rank() < 7.5) {
 			std::cout << "Your total is " << the_player.get_Rank() << ". Do you want to draw another card? Y/N ";
@@ -62,7 +65,7 @@ int main() {
 			std::cout << "New card:\n";
 			the_player.show_newest_card();
 			std::cout << "Your cards:\n";
-			the_player.show_hand();
+			std::cout << the_player.show_hand();
 		};
 		std::cout << "Your total is " << the_player.get_Rank() << ".\n";
 
@@ -71,7 +74,7 @@ int main() {
 			std::cout << "New card:\n";
 			dealer.show_newest_card();
 			std::cout << "Dealer's cards:\n";
-			dealer.show_hand();
+			std::cout << dealer.show_hand();
 			std::cout << "The dealer's total is " << dealer.get_Rank() << ".\n";
 		};
 
@@ -92,7 +95,8 @@ int main() {
 			the_player.modify_monies(-bet);
 		};
 
-		update_game_log();
+		update_game_log(log, round, bet, the_player, dealer);
+		++round;
 
 		std::cout << "Play another round of Siete y medio? Y/N ";
 		std::cin >> response;
