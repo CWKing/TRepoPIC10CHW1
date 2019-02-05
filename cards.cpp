@@ -21,7 +21,7 @@ Deck::Deck() {
 		};
 };
 
-Card Deck::Draw_card() {
+Card Deck::Draw_card_deck() {
 	Card temp_card = this->Card_Deck[this->Card_Deck.size()];
 	this->Card_Deck.pop_back();
 	return temp_card;
@@ -246,8 +246,8 @@ void Hand::show_newest_card2electricboogaloo() const {
 	this->hand[hand.size() - 1].display_card();
 };
 
-void Hand::draw() {
-	this->hand.push_back(Card());
+void Hand::draw(bool random, Deck &deck) {
+	this->hand.push_back(random ? Card() : deck.Draw_card_deck());
 };
 
 void Hand::clear_hand() {
@@ -281,8 +281,8 @@ void Player::show_newest_card() const {
 	this->player_hand.show_newest_card2electricboogaloo();
 };
 
-void Player::draw_card() {
-	this->player_hand.draw();
+void Player::draw_card(bool random, Deck &deck) {
+	this->player_hand.draw(random, deck);
 };
 
 void Player::modify_monies(int bet) {

@@ -22,10 +22,9 @@ enum rank_te { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, JACK = 9, KNIGHT = 10, K
 class Deck {
 public:
 	Deck();
-
-	Card Draw_card();
+	
+	Card Draw_card_deck();
 	void Shuffle();
-
 
 private:
 	std::vector<Card> Card_Deck;
@@ -60,7 +59,7 @@ public:
 	double get_Total_Rank() const;
 	void display_hand() const;
 	void show_newest_card2electricboogaloo() const;
-	void draw();
+	void draw(bool, Deck&);
 	void clear_hand();
 
 private:
@@ -75,7 +74,7 @@ public:
 	void show_hand() const;
 	double get_Rank() const;
 	void show_newest_card() const;
-	void draw_card();
+	void draw_card(bool, Deck&);
 	void modify_monies(int);
 	void clear_player_hand();
 
