@@ -87,6 +87,7 @@ public:
 
 private:
 	std::vector<Card> Card_Deck;
+	std::vector<Card> discarded;
 };
 
 
