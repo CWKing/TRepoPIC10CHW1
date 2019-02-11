@@ -24,7 +24,7 @@ int main() {
 	char response = '\0';
 	int bet = 0, temp_int = 0;
 	bool random = true;
-	Deck the_deck = Deck();
+	Deck the_deck = Deck(); //Not sure why Deck the_deck() causes compiler error
 
 	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n"
 		<< "Play with an infinite deck or finite deck? I/F ";

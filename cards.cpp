@@ -266,16 +266,16 @@ void Player::clear_player_hand() {
    ************************************************* */
 
 Deck::Deck() {
-	Card_Deck.resize(40);
-	for (int suit_int = OROS; suit_int != BASTOS; suit_int++)
-		for (int val_int = AS; val_int != REY; ++val_int) {
+	//Card_Deck.resize(40);
+	for (int suit_int = OROS; suit_int != 4; suit_int++)
+		for (int val_int = AS; val_int != 12; ++val_int) {
 			if (6 < val_int && val_int < 9) continue;
 			Card_Deck.push_back(Card(static_cast<suit_t>(suit_int), static_cast<rank_t>(val_int)));
 		};
 };
 
 Card Deck::Draw_card_deck() {
-	Card temp_card = this->Card_Deck[this->Card_Deck.size()];
+	Card temp_card = this->Card_Deck[this->Card_Deck.size() - 1];
 	this->Card_Deck.pop_back();
 	return temp_card;
 };
