@@ -19,17 +19,10 @@ enum suit_te {GOLDS, CUPS, SWORDS, CLUBS};
 enum rank_t { AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA = 9, CABALLO = 10, REY = 11 };
 enum rank_te { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, JACK = 9, KNIGHT = 10, KING = 11 };
 
-class Deck {
-public:
-	Deck();
-	
-	Card Draw_card_deck();
-	void Shuffle();
-
-private:
-	std::vector<Card> Card_Deck;
-};
-
+class Card;
+class Hand;
+class Player;
+class Deck;
 
 class Card {
 public:
@@ -84,5 +77,17 @@ private:
 	Hand player_hand;
 
 };
+
+class Deck {
+public:
+	Deck();
+
+	Card Draw_card_deck();
+	void Shuffle();
+
+private:
+	std::vector<Card> Card_Deck;
+};
+
 
 #endif

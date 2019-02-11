@@ -27,7 +27,7 @@ int main() {
 	Deck the_deck = Deck();
 
 	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n"
-		<< "Play with an infinite deck or finite deck? I/F";
+		<< "Play with an infinite deck or finite deck? I/F ";
 	std::cin >> response;
 	if (capitalize(response) != *"I") {
 		if (capitalize(response) == *"F") { random = false; }

@@ -9,38 +9,6 @@ You might or might not need these two extra libraries
 */
 
 /* *************************************************
-   Deck class
-   ************************************************* */
-
-Deck::Deck() {
-	Card_Deck.resize(40);
-	for(int suit_int = OROS; suit_int != BASTOS; suit_int++)
-		for (int val_int = AS; val_int != REY; ++val_int) {
-			if (6 < val_int && val_int < 9) continue;
-			Card_Deck.push_back(Card(static_cast<suit_t>(suit_int), static_cast<rank_t>(val_int)));
-		};
-};
-
-Card Deck::Draw_card_deck() {
-	Card temp_card = this->Card_Deck[this->Card_Deck.size()];
-	this->Card_Deck.pop_back();
-	return temp_card;
-};
-
-void Deck::Shuffle() {
-	int size = this->Card_Deck.size();
-	unsigned int scramble_amount = size * (std::rand() % (size / 1000 + 1) + 2);
-	unsigned int temp1 = 0, temp2 = 0;
-	Card temp_Card;
-	for (unsigned int i = 0; i < scramble_amount; ++i) {
-		temp1 = std::rand() % size, temp2 = std::rand() % size;
-		temp_Card = this->Card_Deck[temp1];
-		this->Card_Deck[temp1] = this->Card_Deck[temp2];
-		this->Card_Deck[temp2] = temp_Card;
-	};
-};
-
-/* *************************************************
    Card class
    ************************************************* */
 
@@ -293,3 +261,34 @@ void Player::clear_player_hand() {
 	this->player_hand.clear_hand();
 };
 
+/* *************************************************
+   Deck class
+   ************************************************* */
+
+Deck::Deck() {
+	Card_Deck.resize(40);
+	for (int suit_int = OROS; suit_int != BASTOS; suit_int++)
+		for (int val_int = AS; val_int != REY; ++val_int) {
+			if (6 < val_int && val_int < 9) continue;
+			Card_Deck.push_back(Card(static_cast<suit_t>(suit_int), static_cast<rank_t>(val_int)));
+		};
+};
+
+Card Deck::Draw_card_deck() {
+	Card temp_card = this->Card_Deck[this->Card_Deck.size()];
+	this->Card_Deck.pop_back();
+	return temp_card;
+};
+
+void Deck::Shuffle() {
+	int size = this->Card_Deck.size();
+	unsigned int scramble_amount = size * (std::rand() % (size / 1000 + 1) + 2);
+	unsigned int temp1 = 0, temp2 = 0;
+	Card temp_Card;
+	for (unsigned int i = 0; i < scramble_amount; ++i) {
+		temp1 = std::rand() % size, temp2 = std::rand() % size;
+		temp_Card = this->Card_Deck[temp1];
+		this->Card_Deck[temp1] = this->Card_Deck[temp2];
+		this->Card_Deck[temp2] = temp_Card;
+	};
+};
