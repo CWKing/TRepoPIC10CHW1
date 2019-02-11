@@ -32,8 +32,21 @@ int main() {
 	int bet = 0, temp_int = 0, round = 1;
 	std::ofstream log;
 	log.open("gamelog.txt");
-	
-	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n";
+	bool random = true;
+	Deck the_deck = Deck(); //Not sure why Deck the_deck() causes compiler error
+
+	std::cout << "This is a game called Siete y medio!\nIf you don't know how to play, Google is your guide!\n"
+		<< "Play with an infinite deck or finite deck? I/F ";
+	std::cin >> response;
+	if (capitalize(response) != *"I") {
+		if (capitalize(response) == *"F") { random = false; }
+		else {
+			std:cout << "I don't understand; let's do an infinite deck!\n";
+			random = true;
+		}
+	}
+	else random = true;
+
 	while (temp_int < 1) {
 		std::cout << "Please specify your starting holdings: ";
 		std::cin >> temp_int;
@@ -47,6 +60,7 @@ int main() {
 		bet = 0;
 		the_player.clear_player_hand();
 		dealer.clear_player_hand();
+		if(!random) the_deck.Shuffle();
 
 		while (bet < 1 || the_player.get_wallet() < bet) {
 			std::cout << "You have: $" << the_player.get_wallet() << ". Enter bet: ";
@@ -54,14 +68,14 @@ int main() {
 			if (bet < 1 || the_player.get_wallet() < bet) std::cout << "You can't bet negative, zero, or more than you have!\n";
 		};
 
-		the_player.draw_card();
+		the_player.draw_card(random, the_deck);
 		std::cout << the_player.show_hand();
 
 		while (the_player.get_Rank() < 7.5) {
 			std::cout << "Your total is " << the_player.get_Rank() << ". Do you want to draw another card? Y/N ";
 			std::cin >> response;
 			if (capitalize(response) != 'Y') break;
-			the_player.draw_card();
+			the_player.draw_card(random, the_deck);
 			std::cout << "New card:\n";
 			the_player.show_newest_card();
 			std::cout << "Your cards:\n";
@@ -70,7 +84,7 @@ int main() {
 		std::cout << "Your total is " << the_player.get_Rank() << ".\n";
 
 		while (dealer.get_Rank() < 5.5) {
-			dealer.draw_card();
+			dealer.draw_card(random, the_deck);
 			std::cout << "New card:\n";
 			dealer.show_newest_card();
 			std::cout << "Dealer's cards:\n";
